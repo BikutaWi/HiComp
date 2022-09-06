@@ -1,0 +1,5 @@
+head { title "Titre de la page"; }
+body backgroundcolor = "yellow" { 
+    header1 "Chapitre 1";
+    header2 "Chapitre 1.1";
+}

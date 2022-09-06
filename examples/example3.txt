@@ -1,0 +1,10 @@
+head { title "Titre de la page"; }
+body backgroundcolor = "black" { 
+    header1 color = "white" "Chapitre 1";
+    header2 color = "white" "Chapitre 1.1";
+
+    if (backgroundcolor is not "white") {
+        text color = "white" "Mon texte de description";
+	text color = "green" "Mon deuxieme texte";
+    }
+}

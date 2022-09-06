@@ -1,0 +1,12 @@
+head { title "Titre de la page"; }
+body { 
+    error "Chapitre 1";
+
+    text margin = "3" "Chapitre 1";
+
+    list {
+        for (i = 7 to 6) {
+            element "element de ma liste";
+        }
+    }    
+}

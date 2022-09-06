@@ -1,0 +1,10 @@
+head { title "Titre de la page"; }
+body backgroundcolor = "red" { 
+    header1 "Chapitre 1";
+    header2 "Chapitre 1.1";
+
+    div backgroundcolor = "green" {
+	text color = "red" "Mon texte rouge";
+	text color = "black" "Mon texte noir";
+    }
+}

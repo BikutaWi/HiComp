@@ -1,0 +1,614 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> programme
+Rule 1     programme -> statement
+Rule 2     programme -> statement programme
+Rule 3     statement -> assignation
+Rule 4     statement -> structure
+Rule 5     structure -> condition
+Rule 6     structure -> loop
+Rule 7     condition -> if ( parameter IS STRING ) bloc
+Rule 8     condition -> if ( parameter IS STRING ) bloc ELSE bloc
+Rule 9     condition -> if ( parameter IS NOT STRING ) bloc
+Rule 10    condition -> if ( parameter IS NOT STRING ) bloc ELSE bloc
+Rule 11    if -> IF
+Rule 12    loop -> FOR ( IDENTIFIER = NUMBER TO NUMBER ) bloc
+Rule 13    assignation -> IDENTIFIER content
+Rule 14    assignation -> IDENTIFIER attribute content
+Rule 15    attribute -> parameter = STRING
+Rule 16    parameter -> IDENTIFIER
+Rule 17    content -> bloc
+Rule 18    content -> element
+Rule 19    bloc -> { programme }
+Rule 20    element -> expression ;
+Rule 21    expression -> NUMBER
+Rule 22    expression -> STRING
+
+Terminals, with rules where they appear
+
+(                    : 7 8 9 10 12
+)                    : 7 8 9 10 12
+;                    : 20
+=                    : 12 15
+ELSE                 : 8 10
+FOR                  : 12
+IDENTIFIER           : 12 13 14 16
+IF                   : 11
+IS                   : 7 8 9 10
+NOT                  : 9 10
+NUMBER               : 12 12 21
+STRING               : 7 8 9 10 15 22
+TO                   : 12
+error                : 
+{                    : 19
+}                    : 19
+
+Nonterminals, with rules where they appear
+
+assignation          : 3
+attribute            : 14
+bloc                 : 7 8 8 9 10 10 12 17
+condition            : 5
+content              : 13 14
+element              : 18
+expression           : 20
+if                   : 7 8 9 10
+loop                 : 6
+parameter            : 7 8 9 10 15
+programme            : 2 19 0
+statement            : 1 2
+structure            : 4
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programme
+    (1) programme -> . statement
+    (2) programme -> . statement programme
+    (3) statement -> . assignation
+    (4) statement -> . structure
+    (13) assignation -> . IDENTIFIER content
+    (14) assignation -> . IDENTIFIER attribute content
+    (5) structure -> . condition
+    (6) structure -> . loop
+    (7) condition -> . if ( parameter IS STRING ) bloc
+    (8) condition -> . if ( parameter IS STRING ) bloc ELSE bloc
+    (9) condition -> . if ( parameter IS NOT STRING ) bloc
+    (10) condition -> . if ( parameter IS NOT STRING ) bloc ELSE bloc
+    (12) loop -> . FOR ( IDENTIFIER = NUMBER TO NUMBER ) bloc
+    (11) if -> . IF
+
+    IDENTIFIER      shift and go to state 5
+    FOR             shift and go to state 9
+    IF              shift and go to state 10
+
+    programme                      shift and go to state 1
+    statement                      shift and go to state 2
+    assignation                    shift and go to state 3
+    structure                      shift and go to state 4
+    condition                      shift and go to state 6
+    loop                           shift and go to state 7
+    if                             shift and go to state 8
+
+state 1
+
+    (0) S' -> programme .
+
+
+
+state 2
+
+    (1) programme -> statement .
+    (2) programme -> statement . programme
+    (1) programme -> . statement
+    (2) programme -> . statement programme
+    (3) statement -> . assignation
+    (4) statement -> . structure
+    (13) assignation -> . IDENTIFIER content
+    (14) assignation -> . IDENTIFIER attribute content
+    (5) structure -> . condition
+    (6) structure -> . loop
+    (7) condition -> . if ( parameter IS STRING ) bloc
+    (8) condition -> . if ( parameter IS STRING ) bloc ELSE bloc
+    (9) condition -> . if ( parameter IS NOT STRING ) bloc
+    (10) condition -> . if ( parameter IS NOT STRING ) bloc ELSE bloc
+    (12) loop -> . FOR ( IDENTIFIER = NUMBER TO NUMBER ) bloc
+    (11) if -> . IF
+
+    $end            reduce using rule 1 (programme -> statement .)
+    }               reduce using rule 1 (programme -> statement .)
+    IDENTIFIER      shift and go to state 5
+    FOR             shift and go to state 9
+    IF              shift and go to state 10
+
+    statement                      shift and go to state 2
+    programme                      shift and go to state 11
+    assignation                    shift and go to state 3
+    structure                      shift and go to state 4
+    condition                      shift and go to state 6
+    loop                           shift and go to state 7
+    if                             shift and go to state 8
+
+state 3
+
+    (3) statement -> assignation .
+
+    IDENTIFIER      reduce using rule 3 (statement -> assignation .)
+    FOR             reduce using rule 3 (statement -> assignation .)
+    IF              reduce using rule 3 (statement -> assignation .)
+    $end            reduce using rule 3 (statement -> assignation .)
+    }               reduce using rule 3 (statement -> assignation .)
+
+
+state 4
+
+    (4) statement -> structure .
+
+    IDENTIFIER      reduce using rule 4 (statement -> structure .)
+    FOR             reduce using rule 4 (statement -> structure .)
+    IF              reduce using rule 4 (statement -> structure .)
+    $end            reduce using rule 4 (statement -> structure .)
+    }               reduce using rule 4 (statement -> structure .)
+
+
+state 5
+
+    (13) assignation -> IDENTIFIER . content
+    (14) assignation -> IDENTIFIER . attribute content
+    (17) content -> . bloc
+    (18) content -> . element
+    (15) attribute -> . parameter = STRING
+    (19) bloc -> . { programme }
+    (20) element -> . expression ;
+    (16) parameter -> . IDENTIFIER
+    (21) expression -> . NUMBER
+    (22) expression -> . STRING
+
+    {               shift and go to state 19
+    IDENTIFIER      shift and go to state 12
+    NUMBER          shift and go to state 21
+    STRING          shift and go to state 18
+
+    content                        shift and go to state 13
+    attribute                      shift and go to state 14
+    bloc                           shift and go to state 15
+    element                        shift and go to state 16
+    parameter                      shift and go to state 17
+    expression                     shift and go to state 20
+
+state 6
+
+    (5) structure -> condition .
+
+    IDENTIFIER      reduce using rule 5 (structure -> condition .)
+    FOR             reduce using rule 5 (structure -> condition .)
+    IF              reduce using rule 5 (structure -> condition .)
+    $end            reduce using rule 5 (structure -> condition .)
+    }               reduce using rule 5 (structure -> condition .)
+
+
+state 7
+
+    (6) structure -> loop .
+
+    IDENTIFIER      reduce using rule 6 (structure -> loop .)
+    FOR             reduce using rule 6 (structure -> loop .)
+    IF              reduce using rule 6 (structure -> loop .)
+    $end            reduce using rule 6 (structure -> loop .)
+    }               reduce using rule 6 (structure -> loop .)
+
+
+state 8
+
+    (7) condition -> if . ( parameter IS STRING ) bloc
+    (8) condition -> if . ( parameter IS STRING ) bloc ELSE bloc
+    (9) condition -> if . ( parameter IS NOT STRING ) bloc
+    (10) condition -> if . ( parameter IS NOT STRING ) bloc ELSE bloc
+
+    (               shift and go to state 22
+
+
+state 9
+
+    (12) loop -> FOR . ( IDENTIFIER = NUMBER TO NUMBER ) bloc
+
+    (               shift and go to state 23
+
+
+state 10
+
+    (11) if -> IF .
+
+    (               reduce using rule 11 (if -> IF .)
+
+
+state 11
+
+    (2) programme -> statement programme .
+
+    $end            reduce using rule 2 (programme -> statement programme .)
+    }               reduce using rule 2 (programme -> statement programme .)
+
+
+state 12
+
+    (16) parameter -> IDENTIFIER .
+
+    =               reduce using rule 16 (parameter -> IDENTIFIER .)
+    IS              reduce using rule 16 (parameter -> IDENTIFIER .)
+
+
+state 13
+
+    (13) assignation -> IDENTIFIER content .
+
+    IDENTIFIER      reduce using rule 13 (assignation -> IDENTIFIER content .)
+    FOR             reduce using rule 13 (assignation -> IDENTIFIER content .)
+    IF              reduce using rule 13 (assignation -> IDENTIFIER content .)
+    $end            reduce using rule 13 (assignation -> IDENTIFIER content .)
+    }               reduce using rule 13 (assignation -> IDENTIFIER content .)
+
+
+state 14
+
+    (14) assignation -> IDENTIFIER attribute . content
+    (17) content -> . bloc
+    (18) content -> . element
+    (19) bloc -> . { programme }
+    (20) element -> . expression ;
+    (21) expression -> . NUMBER
+    (22) expression -> . STRING
+
+    {               shift and go to state 19
+    NUMBER          shift and go to state 21
+    STRING          shift and go to state 18
+
+    content                        shift and go to state 24
+    bloc                           shift and go to state 15
+    element                        shift and go to state 16
+    expression                     shift and go to state 20
+
+state 15
+
+    (17) content -> bloc .
+
+    IDENTIFIER      reduce using rule 17 (content -> bloc .)
+    FOR             reduce using rule 17 (content -> bloc .)
+    IF              reduce using rule 17 (content -> bloc .)
+    $end            reduce using rule 17 (content -> bloc .)
+    }               reduce using rule 17 (content -> bloc .)
+
+
+state 16
+
+    (18) content -> element .
+
+    IDENTIFIER      reduce using rule 18 (content -> element .)
+    FOR             reduce using rule 18 (content -> element .)
+    IF              reduce using rule 18 (content -> element .)
+    $end            reduce using rule 18 (content -> element .)
+    }               reduce using rule 18 (content -> element .)
+
+
+state 17
+
+    (15) attribute -> parameter . = STRING
+
+    =               shift and go to state 25
+
+
+state 18
+
+    (22) expression -> STRING .
+
+    ;               reduce using rule 22 (expression -> STRING .)
+
+
+state 19
+
+    (19) bloc -> { . programme }
+    (1) programme -> . statement
+    (2) programme -> . statement programme
+    (3) statement -> . assignation
+    (4) statement -> . structure
+    (13) assignation -> . IDENTIFIER content
+    (14) assignation -> . IDENTIFIER attribute content
+    (5) structure -> . condition
+    (6) structure -> . loop
+    (7) condition -> . if ( parameter IS STRING ) bloc
+    (8) condition -> . if ( parameter IS STRING ) bloc ELSE bloc
+    (9) condition -> . if ( parameter IS NOT STRING ) bloc
+    (10) condition -> . if ( parameter IS NOT STRING ) bloc ELSE bloc
+    (12) loop -> . FOR ( IDENTIFIER = NUMBER TO NUMBER ) bloc
+    (11) if -> . IF
+
+    IDENTIFIER      shift and go to state 5
+    FOR             shift and go to state 9
+    IF              shift and go to state 10
+
+    programme                      shift and go to state 26
+    statement                      shift and go to state 2
+    assignation                    shift and go to state 3
+    structure                      shift and go to state 4
+    condition                      shift and go to state 6
+    loop                           shift and go to state 7
+    if                             shift and go to state 8
+
+state 20
+
+    (20) element -> expression . ;
+
+    ;               shift and go to state 27
+
+
+state 21
+
+    (21) expression -> NUMBER .
+
+    ;               reduce using rule 21 (expression -> NUMBER .)
+
+
+state 22
+
+    (7) condition -> if ( . parameter IS STRING ) bloc
+    (8) condition -> if ( . parameter IS STRING ) bloc ELSE bloc
+    (9) condition -> if ( . parameter IS NOT STRING ) bloc
+    (10) condition -> if ( . parameter IS NOT STRING ) bloc ELSE bloc
+    (16) parameter -> . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 12
+
+    parameter                      shift and go to state 28
+
+state 23
+
+    (12) loop -> FOR ( . IDENTIFIER = NUMBER TO NUMBER ) bloc
+
+    IDENTIFIER      shift and go to state 29
+
+
+state 24
+
+    (14) assignation -> IDENTIFIER attribute content .
+
+    IDENTIFIER      reduce using rule 14 (assignation -> IDENTIFIER attribute content .)
+    FOR             reduce using rule 14 (assignation -> IDENTIFIER attribute content .)
+    IF              reduce using rule 14 (assignation -> IDENTIFIER attribute content .)
+    $end            reduce using rule 14 (assignation -> IDENTIFIER attribute content .)
+    }               reduce using rule 14 (assignation -> IDENTIFIER attribute content .)
+
+
+state 25
+
+    (15) attribute -> parameter = . STRING
+
+    STRING          shift and go to state 30
+
+
+state 26
+
+    (19) bloc -> { programme . }
+
+    }               shift and go to state 31
+
+
+state 27
+
+    (20) element -> expression ; .
+
+    IDENTIFIER      reduce using rule 20 (element -> expression ; .)
+    FOR             reduce using rule 20 (element -> expression ; .)
+    IF              reduce using rule 20 (element -> expression ; .)
+    $end            reduce using rule 20 (element -> expression ; .)
+    }               reduce using rule 20 (element -> expression ; .)
+
+
+state 28
+
+    (7) condition -> if ( parameter . IS STRING ) bloc
+    (8) condition -> if ( parameter . IS STRING ) bloc ELSE bloc
+    (9) condition -> if ( parameter . IS NOT STRING ) bloc
+    (10) condition -> if ( parameter . IS NOT STRING ) bloc ELSE bloc
+
+    IS              shift and go to state 32
+
+
+state 29
+
+    (12) loop -> FOR ( IDENTIFIER . = NUMBER TO NUMBER ) bloc
+
+    =               shift and go to state 33
+
+
+state 30
+
+    (15) attribute -> parameter = STRING .
+
+    {               reduce using rule 15 (attribute -> parameter = STRING .)
+    NUMBER          reduce using rule 15 (attribute -> parameter = STRING .)
+    STRING          reduce using rule 15 (attribute -> parameter = STRING .)
+
+
+state 31
+
+    (19) bloc -> { programme } .
+
+    IDENTIFIER      reduce using rule 19 (bloc -> { programme } .)
+    FOR             reduce using rule 19 (bloc -> { programme } .)
+    IF              reduce using rule 19 (bloc -> { programme } .)
+    $end            reduce using rule 19 (bloc -> { programme } .)
+    }               reduce using rule 19 (bloc -> { programme } .)
+    ELSE            reduce using rule 19 (bloc -> { programme } .)
+
+
+state 32
+
+    (7) condition -> if ( parameter IS . STRING ) bloc
+    (8) condition -> if ( parameter IS . STRING ) bloc ELSE bloc
+    (9) condition -> if ( parameter IS . NOT STRING ) bloc
+    (10) condition -> if ( parameter IS . NOT STRING ) bloc ELSE bloc
+
+    STRING          shift and go to state 34
+    NOT             shift and go to state 35
+
+
+state 33
+
+    (12) loop -> FOR ( IDENTIFIER = . NUMBER TO NUMBER ) bloc
+
+    NUMBER          shift and go to state 36
+
+
+state 34
+
+    (7) condition -> if ( parameter IS STRING . ) bloc
+    (8) condition -> if ( parameter IS STRING . ) bloc ELSE bloc
+
+    )               shift and go to state 37
+
+
+state 35
+
+    (9) condition -> if ( parameter IS NOT . STRING ) bloc
+    (10) condition -> if ( parameter IS NOT . STRING ) bloc ELSE bloc
+
+    STRING          shift and go to state 38
+
+
+state 36
+
+    (12) loop -> FOR ( IDENTIFIER = NUMBER . TO NUMBER ) bloc
+
+    TO              shift and go to state 39
+
+
+state 37
+
+    (7) condition -> if ( parameter IS STRING ) . bloc
+    (8) condition -> if ( parameter IS STRING ) . bloc ELSE bloc
+    (19) bloc -> . { programme }
+
+    {               shift and go to state 19
+
+    bloc                           shift and go to state 40
+
+state 38
+
+    (9) condition -> if ( parameter IS NOT STRING . ) bloc
+    (10) condition -> if ( parameter IS NOT STRING . ) bloc ELSE bloc
+
+    )               shift and go to state 41
+
+
+state 39
+
+    (12) loop -> FOR ( IDENTIFIER = NUMBER TO . NUMBER ) bloc
+
+    NUMBER          shift and go to state 42
+
+
+state 40
+
+    (7) condition -> if ( parameter IS STRING ) bloc .
+    (8) condition -> if ( parameter IS STRING ) bloc . ELSE bloc
+
+    IDENTIFIER      reduce using rule 7 (condition -> if ( parameter IS STRING ) bloc .)
+    FOR             reduce using rule 7 (condition -> if ( parameter IS STRING ) bloc .)
+    IF              reduce using rule 7 (condition -> if ( parameter IS STRING ) bloc .)
+    $end            reduce using rule 7 (condition -> if ( parameter IS STRING ) bloc .)
+    }               reduce using rule 7 (condition -> if ( parameter IS STRING ) bloc .)
+    ELSE            shift and go to state 43
+
+
+state 41
+
+    (9) condition -> if ( parameter IS NOT STRING ) . bloc
+    (10) condition -> if ( parameter IS NOT STRING ) . bloc ELSE bloc
+    (19) bloc -> . { programme }
+
+    {               shift and go to state 19
+
+    bloc                           shift and go to state 44
+
+state 42
+
+    (12) loop -> FOR ( IDENTIFIER = NUMBER TO NUMBER . ) bloc
+
+    )               shift and go to state 45
+
+
+state 43
+
+    (8) condition -> if ( parameter IS STRING ) bloc ELSE . bloc
+    (19) bloc -> . { programme }
+
+    {               shift and go to state 19
+
+    bloc                           shift and go to state 46
+
+state 44
+
+    (9) condition -> if ( parameter IS NOT STRING ) bloc .
+    (10) condition -> if ( parameter IS NOT STRING ) bloc . ELSE bloc
+
+    IDENTIFIER      reduce using rule 9 (condition -> if ( parameter IS NOT STRING ) bloc .)
+    FOR             reduce using rule 9 (condition -> if ( parameter IS NOT STRING ) bloc .)
+    IF              reduce using rule 9 (condition -> if ( parameter IS NOT STRING ) bloc .)
+    $end            reduce using rule 9 (condition -> if ( parameter IS NOT STRING ) bloc .)
+    }               reduce using rule 9 (condition -> if ( parameter IS NOT STRING ) bloc .)
+    ELSE            shift and go to state 47
+
+
+state 45
+
+    (12) loop -> FOR ( IDENTIFIER = NUMBER TO NUMBER ) . bloc
+    (19) bloc -> . { programme }
+
+    {               shift and go to state 19
+
+    bloc                           shift and go to state 48
+
+state 46
+
+    (8) condition -> if ( parameter IS STRING ) bloc ELSE bloc .
+
+    IDENTIFIER      reduce using rule 8 (condition -> if ( parameter IS STRING ) bloc ELSE bloc .)
+    FOR             reduce using rule 8 (condition -> if ( parameter IS STRING ) bloc ELSE bloc .)
+    IF              reduce using rule 8 (condition -> if ( parameter IS STRING ) bloc ELSE bloc .)
+    $end            reduce using rule 8 (condition -> if ( parameter IS STRING ) bloc ELSE bloc .)
+    }               reduce using rule 8 (condition -> if ( parameter IS STRING ) bloc ELSE bloc .)
+
+
+state 47
+
+    (10) condition -> if ( parameter IS NOT STRING ) bloc ELSE . bloc
+    (19) bloc -> . { programme }
+
+    {               shift and go to state 19
+
+    bloc                           shift and go to state 49
+
+state 48
+
+    (12) loop -> FOR ( IDENTIFIER = NUMBER TO NUMBER ) bloc .
+
+    IDENTIFIER      reduce using rule 12 (loop -> FOR ( IDENTIFIER = NUMBER TO NUMBER ) bloc .)
+    FOR             reduce using rule 12 (loop -> FOR ( IDENTIFIER = NUMBER TO NUMBER ) bloc .)
+    IF              reduce using rule 12 (loop -> FOR ( IDENTIFIER = NUMBER TO NUMBER ) bloc .)
+    $end            reduce using rule 12 (loop -> FOR ( IDENTIFIER = NUMBER TO NUMBER ) bloc .)
+    }               reduce using rule 12 (loop -> FOR ( IDENTIFIER = NUMBER TO NUMBER ) bloc .)
+
+
+state 49
+
+    (10) condition -> if ( parameter IS NOT STRING ) bloc ELSE bloc .
+
+    IDENTIFIER      reduce using rule 10 (condition -> if ( parameter IS NOT STRING ) bloc ELSE bloc .)
+    FOR             reduce using rule 10 (condition -> if ( parameter IS NOT STRING ) bloc ELSE bloc .)
+    IF              reduce using rule 10 (condition -> if ( parameter IS NOT STRING ) bloc ELSE bloc .)
+    $end            reduce using rule 10 (condition -> if ( parameter IS NOT STRING ) bloc ELSE bloc .)
+    }               reduce using rule 10 (condition -> if ( parameter IS NOT STRING ) bloc ELSE bloc .)
+

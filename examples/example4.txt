@@ -1,0 +1,11 @@
+head { title "Titre de la page"; }
+body { 
+    header1 "Chapitre 1";
+    header2 "Chapitre 1.1";
+
+    list {
+        for (i = 1 to 6) {
+            element "element %i de ma liste";
+        }
+    }
+}
